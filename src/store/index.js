@@ -9,7 +9,7 @@ import { createShopSlice } from './slices/shopSlice';
 import { createUiSlice } from './slices/uiSlice';
 
 const STORAGE_KEY = 'str-save';
-const SAVE_VERSION = 1;
+const SAVE_VERSION = 2;
 
 export const useGameStore = create()(
   persist(
@@ -49,7 +49,27 @@ export const useGameStore = create()(
         };
       },
 
-      migrate: (persisted) => persisted,
+      migrate: (persisted, version) => {
+        if (!persisted) return persisted;
+
+        // v1 usava `queue` / `completed`; v2 usa availableOrders / completedOrders.
+        if (version < 2) {
+          const legacy = persisted.orders ?? {};
+
+          return {
+            ...persisted,
+            orders: {
+              availableOrders:
+                legacy.availableOrders ?? legacy.queue ?? [],
+              activeOrder: legacy.activeOrder ?? null,
+              completedOrders:
+                legacy.completedOrders ?? legacy.completed ?? [],
+            },
+          };
+        }
+
+        return persisted;
+      },
     },
   ),
 );

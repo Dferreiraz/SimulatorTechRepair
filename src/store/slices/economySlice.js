@@ -33,6 +33,9 @@ export const createEconomySlice = (set, get) => ({
     }));
   },
 
+  /** Atalho de crédito usado pelo core loop de ordens. */
+  addCash: (amount) => get().credit(amount, 'Pagamento de serviço'),
+
   debit: (amount, reason) => {
     if (amount <= 0) return;
 

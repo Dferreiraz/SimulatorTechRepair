@@ -5,8 +5,8 @@ const emptyBench = { device: null, stage: 'idle', selectedPartId: null };
 export const createBenchSlice = (set) => ({
   bench: { ...emptyBench },
 
-  loadDevice: (device) =>
-    set({ bench: { device, stage: 'intake', selectedPartId: null } }),
+  loadDevice: (device, stage = 'intake') =>
+    set({ bench: { device, stage, selectedPartId: null } }),
 
   clearBench: () => set({ bench: { ...emptyBench } }),
 
