@@ -1,6 +1,4 @@
-import type { OrderSlice, SliceCreator } from '../types';
-
-export const createOrderSlice: SliceCreator<OrderSlice> = (set) => ({
+export const createOrderSlice = (set) => ({
   orders: {
     queue: [],
     activeOrder: null,

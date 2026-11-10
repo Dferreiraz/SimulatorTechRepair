@@ -1,32 +1,39 @@
-# React + TypeScript + Vite
+# Simulator Tech Repair
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Jogo web de simulação 3D onde o jogador gerencia uma assistência técnica de computadores.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **Vite 8** (JavaScript puro — `.js` / `.jsx`)
+- **Tailwind CSS v4** (tokens em `src/index.css`)
+- **React Three Fiber** + **Drei** + **three**
+- **Zustand** (estado global com persistência em `localStorage`)
 
-## React Compiler
+## Scripts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+pnpm install     # instala dependências
+pnpm dev         # servidor de desenvolvimento
+pnpm build       # build de produção
+pnpm preview     # pré-visualiza o build
+pnpm lint        # oxlint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Documentação
+
+- [`docs/arquitetura.md`](docs/arquitetura.md) — camadas, pastas e store
+- [`docs/branding.md`](docs/branding.md) — design system do HUD
+- [`docs/requisitos.md`](docs/requisitos.md) — escopo do MVP
+- [`docs/gdd-core.md`](docs/gdd-core.md) — core loop e interação 3D
+- [`docs/roadmap.md`](docs/roadmap.md) — fases de desenvolvimento
+
+## Estrutura
+
+```
+src/
+├── components/3d/   # cena e modelos R3F
+├── components/ui/   # HUD (DOM + Tailwind)
+├── models/          # catálogo, templates e constantes
+├── store/           # Zustand (slices shop, bench, inventory, order, economy, ui)
+└── utils/           # funções puras
+```

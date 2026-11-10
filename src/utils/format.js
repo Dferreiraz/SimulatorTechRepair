@@ -4,4 +4,4 @@ const brl = new Intl.NumberFormat('pt-BR', {
 });
 
 /** R$ 1.234,56 */
-export const formatCurrency = (value: number): string => brl.format(value);
+export const formatCurrency = (value) => brl.format(value);

@@ -1,14 +1,8 @@
 import { clamp } from '@/utils/math';
 
-import type { BenchSlice, SliceCreator } from '../types';
+const emptyBench = { device: null, stage: 'idle', selectedPartId: null };
 
-const emptyBench = {
-  device: null,
-  stage: 'idle' as const,
-  selectedPartId: null,
-};
-
-export const createBenchSlice: SliceCreator<BenchSlice> = (set) => ({
+export const createBenchSlice = (set) => ({
   bench: { ...emptyBench },
 
   loadDevice: (device) =>

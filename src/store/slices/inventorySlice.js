@@ -1,6 +1,4 @@
-import type { InventorySlice, SliceCreator } from '../types';
-
-export const createInventorySlice: SliceCreator<InventorySlice> = (set) => ({
+export const createInventorySlice = (set) => ({
   inventory: { stock: {} },
 
   addStock: (partId, quantity = 1) =>

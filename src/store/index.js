@@ -7,12 +7,11 @@ import { createInventorySlice } from './slices/inventorySlice';
 import { createOrderSlice } from './slices/orderSlice';
 import { createShopSlice } from './slices/shopSlice';
 import { createUiSlice } from './slices/uiSlice';
-import type { GameState, PersistedGameState } from './types';
 
 const STORAGE_KEY = 'str-save';
 const SAVE_VERSION = 1;
 
-export const useGameStore = create<GameState>()(
+export const useGameStore = create()(
   persist(
     (...args) => ({
       ...createShopSlice(...args),
@@ -28,7 +27,7 @@ export const useGameStore = create<GameState>()(
       storage: createJSONStorage(() => localStorage),
 
       // `ui` é efêmero: nunca vai para o save.
-      partialize: (state): PersistedGameState => ({
+      partialize: (state) => ({
         shop: state.shop,
         bench: state.bench,
         inventory: state.inventory,
@@ -36,10 +35,9 @@ export const useGameStore = create<GameState>()(
         economy: state.economy,
       }),
 
-      // Merge profundo (1 nível) para preservar campos novos de cada domínio
-      // quando o save vier de uma versão anterior.
+      // Merge raso por domínio (1 nível) preserva campos novos de saves antigos.
       merge: (persisted, current) => {
-        const saved = persisted as Partial<PersistedGameState>;
+        const saved = persisted ?? {};
 
         return {
           ...current,
@@ -51,13 +49,7 @@ export const useGameStore = create<GameState>()(
         };
       },
 
-      migrate: (persisted, version) => {
-        // Schema inicial. Futuras mudanças entram aqui, uma por versão.
-        void version;
-        return persisted as GameState;
-      },
+      migrate: (persisted) => persisted,
     },
   ),
 );
-
-export * from './types';

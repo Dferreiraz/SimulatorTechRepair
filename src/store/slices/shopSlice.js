@@ -1,8 +1,6 @@
 import { clamp } from '@/utils/math';
 
-import type { ShopSlice, SliceCreator } from '../types';
-
-export const createShopSlice: SliceCreator<ShopSlice> = (set) => ({
+export const createShopSlice = (set) => ({
   shop: {
     name: 'Tech Repair',
     level: 1,

@@ -1,10 +1,10 @@
-import { useGameStore } from '@/store';
-import { formatCurrency } from '@/utils/format';
+import { useGameStore } from '@/store'
+import { formatCurrency } from '@/utils/format'
 
 export default function App() {
-  const cash = useGameStore((state) => state.economy.cash);
-  const day = useGameStore((state) => state.shop.day);
-  const reputation = useGameStore((state) => state.shop.reputation);
+  const cash = useGameStore((state) => state.economy.cash)
+  const day = useGameStore((state) => state.shop.day)
+  const reputation = useGameStore((state) => state.shop.reputation)
 
   return (
     <main className="min-h-screen bg-base text-ink">
@@ -46,5 +46,5 @@ export default function App() {
         </div>
       </section>
     </main>
-  );
+  )
 }

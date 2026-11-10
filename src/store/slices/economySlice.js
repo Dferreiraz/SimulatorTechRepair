@@ -1,18 +1,16 @@
-import type { Transaction } from '@/models/types';
 import { createId } from '@/utils/id';
-
-import type { EconomySlice, SliceCreator } from '../types';
 
 const MAX_LEDGER_ENTRIES = 50;
 
-const makeTransaction = (
-  day: number,
-  amount: number,
-  kind: Transaction['kind'],
-  reason: string,
-): Transaction => ({ id: createId(), day, amount, kind, reason });
+const makeTransaction = (day, amount, kind, reason) => ({
+  id: createId(),
+  day,
+  amount,
+  kind,
+  reason,
+});
 
-export const createEconomySlice: SliceCreator<EconomySlice> = (set, get) => ({
+export const createEconomySlice = (set, get) => ({
   economy: {
     cash: 1500,
     ledger: [],

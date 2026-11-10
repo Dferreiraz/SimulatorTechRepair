@@ -1,10 +1,8 @@
 import { createId } from '@/utils/id';
 
-import type { SliceCreator, UiSlice } from '../types';
-
 const MAX_TOASTS = 3;
 
-export const createUiSlice: SliceCreator<UiSlice> = (set) => ({
+export const createUiSlice = (set) => ({
   ui: {
     activePanel: 'none',
     paused: false,
