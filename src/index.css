@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — src/docs/branding.md
+ * Base dark navy + bright blue de ação.
+ */
+@theme {
+  /* Superfícies */
+  --color-base: #070d17;
+  --color-surface: #0e1728;
+  --color-elevated: #152238;
+  --color-inset: #0a1322;
+
+  /* Bordas */
+  --color-line: #1e2e47;
+  --color-line-strong: #2b3f5e;
+
+  /* Ação */
+  --color-brand: #2e7bff;
+  --color-brand-hover: #4a8fff;
+  --color-brand-pressed: #1f63d6;
+  --color-brand-soft: rgb(46 123 255 / 0.12);
+
+  /* Texto */
+  --color-ink: #e8eef9;
+  --color-ink-soft: #a9b8ce;
+  --color-ink-muted: #6f819b;
+
+  /* Semânticas */
+  --color-ok: #2ed47a;
+  --color-warn: #f5a524;
+  --color-bad: #ff5a5f;
+  --color-info: #38bdf8;
+
+  /* Tipografia */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Forma e elevação */
+  --radius-control: 8px;
+  --radius-panel: 10px;
+  --shadow-panel: 0 8px 24px rgb(0 0 0 / 0.35);
+
+  /* Movimento */
+  --ease-out-ui: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--color-base);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgb(46 123 255 / 0.35);
+    color: var(--color-ink);
+  }
+}
