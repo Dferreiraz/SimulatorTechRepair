@@ -9,7 +9,9 @@
   <a href="#-tecnologias">Tecnologias</a> •
   <a href="#-documentação">Documentação</a> •
   <a href="#-autor">Autor</a> •
-  <a href="#-licença">Licença</a> •
+  <!-- 
+  <a href="#-licença">Licença</a> • 
+  -->
 </p>
 
 ---
